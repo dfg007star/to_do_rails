@@ -1,0 +1,19 @@
+<% @tasks.each do |task|%>
+
+<% if task.status == true %>
+<strike>
+<%= task.name%>
+</strike>
+<%= form_for task do |f| %>
+<%= f.check_box :status, :value => task.status %>
+<%= f.submit "Restore" %>
+<% end %>
+<% elsif task.status == false %>
+<%= task.name%>
+<%= form_for task do |f| %>
+<%= f.check_box :status, :value => task.status %>
+<%= f.submit "Done" %>
+<% end %>
+<% end %>
+
+<% end %>
